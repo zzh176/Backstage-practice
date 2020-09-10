@@ -1,6 +1,8 @@
-<!-- ] -->
+<!--  -->
 <template>
-<div class=''></div>
+<div class=''>
+    相册管理
+</div>
 </template>
 
 <script>
