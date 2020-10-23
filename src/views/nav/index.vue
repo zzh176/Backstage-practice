@@ -3,13 +3,7 @@
   <div class="box">
     <div class="nav">
       <el-col :span="12" style="width:100%;height:100%;">
-        <el-menu
-          :router="true"
-          default-active="$route.path"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-        >
+        <el-menu :router="true" default-active="$route.path" class="el-menu-vertical-demo">
           <el-menu-item index="/htshou">
             <i class="el-icon-setting"></i>
             <span slot="title">后台首页</span>
@@ -56,7 +50,8 @@ export default {
   display: flex;
   .nav {
     width: 19%;
-
+    // height: 100%;
+    border-right: 1px solid #808080;
     // border: 1px solid #000;
     position: absolute;
     // background: red;
@@ -65,7 +60,7 @@ export default {
     left: 0;
   }
   .main {
-    width: 80%;
+    width: 81%;
     // border: 1px solid #000;
     // background: red;
     position: absolute;

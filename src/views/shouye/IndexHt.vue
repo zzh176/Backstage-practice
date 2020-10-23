@@ -2,7 +2,7 @@
   <div>
     <!-- 数据统计 -->
     <el-row :gutter="20">
-      <el-col :span="6" v-for="(item,index) in counts" :key="index">
+      <el-col :span="6" v-for="(item,index) in counts" :key="index" v-if="">
         <el-card class="box-card" shadow="hover">
           <div class="d-flex align-items-center">
             <i

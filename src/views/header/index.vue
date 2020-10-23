@@ -10,7 +10,7 @@
         :default-active="$route.path"
         class="el-menu-demo"
         mode="horizontal"
-        @select="handleSelect"
+        
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -22,37 +22,75 @@
         <el-menu-item class="mar" index="/she">设置</el-menu-item>
       </el-menu>
     </div>
+
     <div class="out">
       <el-avatar
         class="out_img"
         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
       ></el-avatar>
-      <el-dropdown>
+      <el-dropdown @command="handle">
         <span class="el-dropdown-link">
-          下拉菜单
+          admin
           <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
-        <el-dropdown-menu class="out_text" slot="dropdown">
-          <el-dropdown-item>修改密码</el-dropdown-item>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item icon="el-icon-edit" command="changePass">修改密码</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-fold" command="checkOut">退出系统</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    
     
   </div>
 </template>
 
 <script>
+import loginApi from "../../api/login"
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      name:"",
+    };
   },
   computed: {},
   watch: {},
   //方法集合
-  methods: {},
-  created() {},
+  methods: {
+    handle(command) {
+      console.log(command);
+      switch (command) {
+        case "changePass":
+          this.changePass();
+          break;
+        case "checkOut":
+          this.checkOut();
+          break;
+      }
+    },
+     changePass() {
+      console.log("修改密码");
+    },
+    checkOut() {
+      console.log("退出登录");
+
+      localStorage.removeItem("ht_token");
+
+      localStorage.removeItem("ht_info");
+
+      this.$router.push("/login");
+      this.$message({
+        message: "成功退出",
+        center: true,
+      });
+    },
+
+  },
+  created() {
+    const info = JSON.parse(localStorage.getItem("ht_info"));
+    this.name = info.name !== "undefined" ? info.name : "";
+  
+  },
   mounted() {},
 };
 </script>

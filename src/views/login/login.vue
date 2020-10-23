@@ -38,14 +38,25 @@ export default {
   watch: {},
   //方法集合
   methods: {
+    // onSubmit(formName) {
+    //   this.$refs[formName].validate(valid => {
+    //     console.log(valid)
+    //     if(valid){
+    //       loginApi.login(this.form.name,this.form.pass).then((res) => {
+    //         console.log(res)
+    //       })
+    //     }
+    //    this.$store.dispatch("login",this.form)
+    //   });
+    // },
+
     password(from) {
       this.$refs[from].validate((valid) => {
         console.log(valid);
-        if ((valid = true)) {
+        if (valid) {
           //调用登录接口
-          loginApi
-            .login(this.form.name, this.form.pass)
-            .then((res) => {
+          console.log("111")
+          loginApi.login(this.form.name, this.form.pass).then((res) => {
               //在接口里获取code的值200
               console.log(res);
               const code = res.status;
@@ -61,28 +72,6 @@ export default {
                 localStorage.setItem("ht_token", token);
                 localStorage.setItem("ht_info", JSON.stringify(resp));
                 this.$router.push("/");
-                //获取用户信息
-                // loginApi.login().then((res) => {
-                //   console.log(res);
-                //   // 获取用户信息code值200  resp.code
-                //   const resp = res.data.data.role;
-                //   console.log(resp);
-                //   if (resp.code == 200) {
-                //     //把获取到的用户信息保存到本地
-                //     localStorage.setItem("ht_info", JSON.stringify(resp.data));
-                //     //  在push到主页面   跳转到主页面
-                //     this.$router.push("/");
-                //     this.$message({
-                //       message: "登录成功",
-                //       type: "success",
-                //     });
-                //   } else {
-                //     this.$message({
-                //       message: "登录失败",
-                //       type: "warning",
-                //     });
-                //   }
-                // });
               } else {
                 this.$message({
                   message: "登录失败",

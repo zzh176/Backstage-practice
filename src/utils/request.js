@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { Loading } from 'element-ui';
 import router from "../router/index"
+
+import {getToken} from "./auth.js"
 const request = axios.create({
     //设置公共路径
-    baseURL:'http://ceshi5.dishait.cn',
-    // baseURL:process.env.VUE_APP_BASE_API,
+    // baseURL:'http://ceshi5.dishait.cn',
+    baseURL:process.env.VUE_APP_API_NAME,
     timeout:5000  //设置请求时间是否超时 
 });
+
 //封装loading加载
 const loading = {
   loadingInstance : null,
@@ -34,8 +37,10 @@ request.interceptors.request.use(function (config){
     console.log("请求拦截")
 
     // loading.open();
-    const token = localStorage.getItem("ht_token")?localStorage.getItem("ht_token"):"";
-    config.headers.Authorization =token;
+    const token = getToken() ? getToken() : ""
+    config.headers.token = token;
+    // const token = localStorage.getItem("ht_token")?localStorage.getItem("ht_token"):"";
+    // config.headers.Authorization =token;
     return config;
 },function (error){
     // loading.close();

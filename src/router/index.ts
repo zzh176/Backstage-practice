@@ -14,6 +14,7 @@ import She from "@/views/nav/she.vue"
 // ===============================================  头部  首页
 import ShopList from "@/views/shouye/shoplist.vue"
 import XiangCe from "@/views/shouye/xiangce.vue"
+import Create from "@/views/shangping/create.vue"
 import HtShou from "@/views/shouye/IndexHt.vue"
 // ===============================================  头部 商品
 import Sfenlei from "@/views/shangping/fenlei.vue"
@@ -48,6 +49,7 @@ const routes: Array<RouteConfig> = [
     name: "login",
     component: Login
   },
+  
   {
     path: "/",
     name: "home",
@@ -196,6 +198,10 @@ const routes: Array<RouteConfig> = [
             path: "/slist",
             component: Slist
           },
+          {
+            path:"/create",
+            component:Create
+          }
         ]
       }
     ]

@@ -2,7 +2,7 @@
 <template>
   <div class="home">
     <Header />
-    <Nav />
+    <Nav class="nnn"/>
     <!-- <Main /> -->
     <!-- ======================================== -->
     <!-- ======================================== -->
@@ -39,6 +39,4 @@ export default {
   padding: 0;
   list-style: none;
 }
-
-
 </style>

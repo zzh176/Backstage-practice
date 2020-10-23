@@ -71,9 +71,11 @@ export default {
     top: 8.7%;
     bottom: 0;
     left: 0;
+    border-right: 1px solid #808080;
+
   }
   .main {
-    width: 80%;
+    width: 81%;
     // border: 1px solid #000;
     // background: red;
     position: absolute;
